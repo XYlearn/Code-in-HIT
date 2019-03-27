@@ -1,0 +1,33 @@
+
+               a
+       b               c
+   d       e       f       h
+ i   j   k   l   m   n   o   p
+q r s t u v w x y z
+***************************************************************
+BTree preOrder:
+abdiqrjstekuvlwxcfmyznhop
+cost 0.002909s
+BTree inOrder:
+qirdsjtbukvewlxaymzfncohp
+cost 0.016396s
+BTree postOrder:
+qristjduvkwxlebyzmnfophca
+cost 0.00987s
+BTree levelOrder:
+abcdefhijklmnopqrstuvwxyz
+cost 0.035036s
+
+--------------
+THTree preOrder:
+abdiqrjstekuvlwxcfmyznhop
+cost 0.001128s
+THTree inOrder:
+qirdsjtbukvewlxaymzfncohp
+cost 0.001385s
+THTree postOrder:
+qristjduvkwxlebyzmnfophca
+cost 0.046248s
+THTree levelOrder:
+abcdefhijklmnopqrstuvwxyz
+cost 0.04403s

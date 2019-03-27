@@ -1,0 +1,4 @@
+django==1.11
+requests
+cryptography
+PyOpenSSL

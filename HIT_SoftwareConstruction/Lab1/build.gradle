@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
+	compile 'junit:junit:4.12'
+	testCompile 'junit:junit:4.12'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src/P1', 'src/P2', 'src/P3', 'src/P4']
+		}
+	}
+	test {
+		java {
+			srcDirs = ['test/P3', 'test/P4']
+		}
+	}
+}
+
+task copyJars(type: Copy) {
+	from configurations.runtime
+	into 'lib'
+}

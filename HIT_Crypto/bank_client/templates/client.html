@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% block content%}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Pay Information</h3>
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="panel-group{% if form.SA.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.SA.id_for_label }}">{{ form.SA.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.SA.value|default_if_none:'' }}" id="{{ form.C.id_for_label }}"
+                            name="{{ form.SA.html_name }}" maxlength="{{ form.SA.field.max_length }}">
+                        {% for error in form.SA.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.OSN.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.OSN.id_for_label }}">{{ form.OSN.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.OSN.value|default_if_none:'' }}" id="{{ form.OSN.id_for_label }}"
+                            name="{{ form.OSN.html_name }}" maxlength="{{ form.OSN.field.max_length }}">
+                        {% for error in form.OSN.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.BA.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.BA.id_for_label }}">{{ form.BA.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.BA.value|default_if_none:'' }}" id="{{ form.BA.id_for_label }}"
+                            name="{{ form.BA.html_name }}" maxlength="{{ form.BA.field.max_length }}">
+                        {% for error in form.BA.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.DA.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.DA.id_for_label }}">{{ form.DA.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.DA.value|default_if_none:'' }}" id="{{ form.DA.id_for_label }}"
+                            name="{{ form.DA.html_name }}" maxlength="{{ form.DA.field.max_length }}">
+                        {% for error in form.DA.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.AM.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.AM.id_for_label }}">{{ form.AM.label }} (Yuan)</label>
+                        <input type="text" class="form-control" value="{{ form.AM.value|default_if_none:'' }}" id="{{ form.AM.id_for_label }}"
+                            name="{{ form.AM.html_name }}" maxlength="{{ form.AM.field.max_length }}">
+                        {% for error in form.AM.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-success">Pay</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

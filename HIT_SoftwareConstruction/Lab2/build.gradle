@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ["src/P1", "src/P2", "src/P3"]
+		}
+	}
+	
+	test {
+		java {
+			srcDirs = ["test/P1", "test/P2", "/test/P3"]
+		}
+	}
+}
+
+task copyJars(type: Copy) {
+	from configurations.runtime
+	into 'lib'
+}

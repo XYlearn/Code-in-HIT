@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stuip.h": "c",
+        "string.h": "c",
+        "stdint.h": "c"
+    },
+    "python.pythonPath": "/usr/local/bin/python3"
+}

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcsg324-3" LaunchTime="1498462825">
+  <File Type="PWROPT-DRC" Name="elock_drc_pwropted.rpt"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="elock_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="elock_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="elock_power_routed.rpx"/>
+  <File Type="PA-TCL" Name="elock.tcl"/>
+  <File Type="OPT-HWDEF" Name="elock.hwdef"/>
+  <File Type="RDI-RDI" Name="elock.vdi"/>
+  <File Type="OPT-DCP" Name="elock_opt.dcp"/>
+  <File Type="OPT-DRC" Name="elock_drc_opted.rpt"/>
+  <File Type="OPT-TIMING" Name="elock_timing_summary_opted.rpt"/>
+  <File Type="PWROPT-DCP" Name="elock_pwropt.dcp"/>
+  <File Type="PWROPT-TIMING" Name="elock_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="elock_placed.dcp"/>
+  <File Type="PLACE-IO" Name="elock_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="elock_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="elock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="elock_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="elock_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="elock_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="elock_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="elock_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="elock_postplace_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="elock_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="elock_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="elock_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-TIMING" Name="elock_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="elock_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="elock_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="elock_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="elock_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="elock_drc_routed.pb"/>
+  <File Type="BG-BIN" Name="elock.bin"/>
+  <File Type="ROUTE-DRC-RPX" Name="elock_drc_routed.rpx"/>
+  <File Type="BG-DRC" Name="elock.drc"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="elock_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-MSK" Name="elock.msk"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="elock_methodology_drc_routed.rpx"/>
+  <File Type="BG-BGN" Name="elock.bgn"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="elock_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="elock_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="elock_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="elock_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="elock_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="elock_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="elock_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="elock_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="elock_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="elock_clock_utilization_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="elock_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="elock_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="elock_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="elock_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="elock_timing_summary_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="elock.bit"/>
+  <File Type="BITSTR-RBT" Name="elock.rbt"/>
+  <File Type="BITSTR-NKY" Name="elock.nky"/>
+  <File Type="BITSTR-BMM" Name="elock_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="elock.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="elock.sysdef"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/warning.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/lock_register.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Inputer.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/key_register.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/elock.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../CounterMod12/CounterMod12.srcs/sources_1/new/jkff.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/cyto.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../Register_4bit/Register_4bit.srcs/sources_1/new/register.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../mux4_1/mux4_1.srcs/sources_1/new/mux4_1.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/lock.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../CounterMod12/CounterMod12.srcs/sources_1/new/counter_mod12.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/circ_reset.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="elock"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/lock_constraints.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/lock_constraints.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

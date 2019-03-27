@@ -1,0 +1,16 @@
+GraphType = MovieGraph
+GraphName = MyFavoriteMovies
+VertexType = Movie, Actor, Director
+Vertex = <TheShawshankRedemption, Movie, <1994, USA, 9.3>>
+Vertex = <FrankDarabont, Director, <M, 59>>
+Vertex = <MorganFreeman, Actor, <M, 81>>
+Vertex = <TimRobbins, Actor, <M, 60>>
+Vertex = <TheGreenMile, Movie, <1999, USA, 8.5>>
+Vertex = <TomHanks, Actor, <M, 62>>
+EdgeType = MovieActorRelation, MovieDirectorRelation, SameMovieHyperEdge
+Edge = <SRFD, MovieDirectorRelation, -1, TheShawshankRedemption, FrankDarabont, No>
+Edge = <GMFD, MovieDirectorRelation, -1, TheGreenMile, FrankDarabont, No>
+Edge = <SRMF, MovieActorRelation, 1, TheShawshankRedemption, TimRobbins, No>
+Edge = <SRTR, MovieActorRelation, 2, TheShawshankRedemption, MorganFreeman, No>
+Edge = <GMTH, MovieActorRelation, 1, TheGreenMile, TomHanks, No>
+HyperEdge = <ActorsInSR,SameMovieHyperEdge,{TimRobbins,MorganFreeman}>

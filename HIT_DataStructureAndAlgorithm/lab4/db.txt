@@ -1,0 +1,12 @@
+A G 71
+A D 68
+A B 66
+A H 72
+A I 73
+A E 69
+A F 70
+A A 65
+A C 67
+D I
+D A
+D C

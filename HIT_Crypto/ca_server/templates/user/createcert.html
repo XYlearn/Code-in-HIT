@@ -1,0 +1,31 @@
+{% extends 'user/home.html' %}
+
+{% load staticfiles %}
+
+{% block panel %}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Bind Subject</h3>
+            </div>
+            <div class="panel-body">
+                <form action="{% url 'bind'%}" method="post">
+                    {% csrf_token %}
+                    <div class="panel-group{% if form.C.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.C.id_for_label }}">{{ form.C.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.C.value|default_if_none:'' }}" id="{{ form.C.id_for_label }}"
+                            name="{{ form.C.html_name }}" maxlength="{{ form.C.field.max_length }}">
+                        {% for error in form.C.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-success">Create Cert</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock panel %}

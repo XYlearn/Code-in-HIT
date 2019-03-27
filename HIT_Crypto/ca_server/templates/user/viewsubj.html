@@ -1,0 +1,72 @@
+{% extends 'user/home.html' %}
+
+{% load staticfiles %}
+
+{% block panel %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">View Subject</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="panel-group">
+                        <label class="control-label" for="{{ form.C.id_for_label }}">{{ form.C.label }}</label>
+                        <input readonly type="text" class="form-control" value="{{ subj.C }}" id="{{ form.C.id_for_label }}"
+                            name="{{ form.C.html_name }}" maxlength="{{ form.C.field.max_length }}">
+                        {% for error in form.C.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.ST.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.ST.id_for_label }}">{{ form.ST.label }}</label>
+                        <input readonly type="text" class="form-control" value="{{ subj.ST }}" id="{{ form.ST.id_for_label }}"
+                            name="{{ form.ST.html_name }}" maxlength="{{ form.ST.field.max_length }}">
+                    </div>
+                    <div class="panel-group{% if form.L.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.L.id_for_label }}">{{ form.L.label }}</label>
+                        <input readonly type="text" class="form-control" value="{{ subj.L }}" id="{{ form.L.id_for_label }}"
+                            name="{{ form.L.html_name }}" maxlength="{{ form.L.field.max_length }}">
+                    </div>
+                    <div class="panel-group{% if form.O.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.O.id_for_label }}">{{ form.O.label }}</label>
+                        <input readonly type="text" class="form-control" value="{{ subj.O }}" id="{{ form.O.id_for_label }}"
+                            name="{{ form.O.html_name }}" maxlength="{{ form.O.field.max_length }}">
+                    </div>
+                    <div class="panel-group{% if form.OU.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.OU.id_for_label }}">{{ form.OU.label }}</label>
+                        <input readonly type="text" class="form-control" value="{{ subj.OU }}" id="{{ form.OU.id_for_label }}"
+                            name="{{ form.OU.html_name }}" maxlength="{{ form.OU.field.max_length }}">
+                    </div>
+                    <div class="panel-group{% if form.CN.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.CN.id_for_label }}">{{ form.CN.label }}</label>
+                        <input readonly type="text" class="form-control" value="{{ subj.CN }}" id="{{ form.CN.id_for_label }}"
+                            name="{{ form.CN.html_name }}" maxlength="{{ form.CN.field.max_length }}">
+                    </div>
+                    <div class="panel-group{% if form.emailAddress.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.emailAddress.id_for_label }}">
+                            {{ form.emailAddress.label }}
+                        </label>
+                        <input readonly type="email" class="form-control" value="{{ subj.emailAddress }}" id="{{ form.emailAddress.id_for_label }}"
+                            name="{{ form.emailAddress.html_name }}" maxlength="{{ form.emailAddress.field.max_length }}">
+                    </div>
+                    {% if not subj.valid %}
+                    <div class="panel-group has-error">
+                        <span class="help-block">Not Approved</span>
+                    </div>
+                    {% endif %}
+                </form>
+                {% if not subj.valid %}
+                <form action="{% url 'cancelbind' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Cancel Request</button>
+                </form>
+                {% endif %}
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock panel %}

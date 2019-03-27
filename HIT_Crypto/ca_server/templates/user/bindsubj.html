@@ -1,0 +1,77 @@
+{% extends 'user/home.html' %}
+
+{% load staticfiles %}
+
+{% block panel %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Bind Subject</h3>
+            </div>
+            <div class="panel-body">
+                <form action="{% url 'bind' %}" method="post">
+                    {% csrf_token %}
+                    <div class="panel-group{% if form.C.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.C.id_for_label }}">{{ form.C.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.C.value|default_if_none:'' }}" id="{{ form.C.id_for_label }}"
+                            name="{{ form.C.html_name }}" maxlength="{{ form.C.field.max_length }}">
+                        {% for error in form.C.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.ST.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.ST.id_for_label }}">{{ form.ST.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.ST.value|default_if_none:'' }}" id="{{ form.ST.id_for_label }}"
+                            name="{{ form.ST.html_name }}" maxlength="{{ form.ST.field.max_length }}">
+                        {% for error in form.ST.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.L.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.L.id_for_label }}">{{ form.L.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.L.value|default_if_none:'' }}" id="{{ form.L.id_for_label }}"
+                            name="{{ form.L.html_name }}" maxlength="{{ form.L.field.max_length }}">
+                        {% for error in form.L.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.O.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.O.id_for_label }}">{{ form.O.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.O.value|default_if_none:'' }}" id="{{ form.O.id_for_label }}"
+                            name="{{ form.O.html_name }}" maxlength="{{ form.O.field.max_length }}">
+                        {% for error in form.O.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.OU.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.OU.id_for_label }}">{{ form.OU.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.OU.value|default_if_none:'' }}" id="{{ form.OU.id_for_label }}"
+                            name="{{ form.OU.html_name }}" maxlength="{{ form.OU.field.max_length }}">
+                        {% for error in form.OU.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.CN.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.CN.id_for_label }}">{{ form.CN.label }}</label>
+                        <input type="text" class="form-control" value="{{ form.CN.value|default_if_none:'' }}" id="{{ form.CN.id_for_label }}"
+                            name="{{ form.CN.html_name }}" maxlength="{{ form.CN.field.max_length }}">
+                        {% for error in form.CN.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="panel-group{% if form.emailAddress.errors %} has-error{% endif %}">
+                        <label class="control-label" for="{{ form.emailAddress.id_for_label }}">{{ form.emailAddress.label }}</label>
+                        <input type="email" class="form-control" value="{{ form.emailAddress.value|default_if_none:'' }}" id="{{ form.emailAddress.id_for_label }}"
+                            name="{{ form.emailAddress.html_name }}" maxlength="{{ form.emailAddress.field.max_length }}">
+                        {% for error in form.emailAddress.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-success">Bind Subject</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock panel %}

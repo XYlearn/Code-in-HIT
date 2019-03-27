@@ -1,0 +1,6 @@
+LadderNumber : 3
+LadderLength : 20
+TimeSpan : 3
+MonkeyNumber : 5
+MaxMonkeyNumber : 30
+MaxVelocity : 10

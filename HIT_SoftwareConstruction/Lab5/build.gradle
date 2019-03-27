@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+	compile group: 'net.sf.jung', name: 'jung2', version: '2.0.1', ext: 'pom'
+	// https://mvnrepository.com/artifact/net.sf.jung/jung-graph-impl
+	compile group: 'net.sf.jung', name: 'jung-graph-impl', version: '2.0.1'
+	// https://mvnrepository.com/artifact/net.sf.jung/jung-visualization
+	compile group: 'net.sf.jung', name: 'jung-visualization', version: '2.0.1'
+	// https://mvnrepository.com/artifact/net.sf.jung/jung-api
+	compile group: 'net.sf.jung', name: 'jung-api', version: '2.0.1'
+	// https://mvnrepository.com/artifact/net.sf.jung/jung-algorithms
+	compile group: 'net.sf.jung', name: 'jung-algorithms', version: '2.0.1'
+	// https://mvnrepository.com/artifact/net.sf.jung/jung-io
+	compile group: 'net.sf.jung', name: 'jung-io', version: '2.0.1'
+	// https://mvnrepository.com/artifact/net.sf.jung/jung-jai
+	compile group: 'net.sf.jung', name: 'jung-jai', version: '2.0.1'
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ["src/src", "src/debug"]
+		}
+	}
+	
+	test {
+		java {
+			srcDirs = ["test/src"]
+		}
+	}
+}
+
+
+task copyJars(type: Copy) {
+	from configurations.runtime
+	into 'lib'
+}

@@ -1,0 +1,15 @@
+GraphName = test
+GraphType = GraphPoet
+VertexType = Word
+EdgeType = WordNeighborhood
+Vertex = <w1, Word, <>>
+Vertex = <w2, Word, <>>
+Vertex = <w3, Word, <>>
+Vertex = <w4, Word, <>>
+Vertex = <w5, Word, <>>
+Edge = <e1, WordNeighborhood, 1, w1, w2, Yes>
+Edge = <e2, WordNeighborhood, 1, w2, w3, Yes>
+Edge = <e3, WordNeighborhood, 1, w1, w3, Yes>
+Edge = <e4, WordNeighborhood, 1, w1, w4, Yes>
+Edge = <e5, WordNeighborhood, 1, w3, w4, Yes>
+Edge = <e6, WordNeighborhood, 1, w4, w3, Yes>

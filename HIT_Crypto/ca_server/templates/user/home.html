@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}CA{% endblock %}
+
+{% block content%}
+
+{% block sidebar %}
+<div class="sidenav">
+<a href={% url 'bind' %}>Bind Subject</a>
+<a href={% url 'create' %}>Create Cert</a>
+<a href={% url 'view' %}>View Cert</a>
+<a href={% url 'update' %}>Update Cert</a>
+<a href={% url 'cancel' %}>Cancel Cert</a>
+<a href={% url 'recover' %}>Recover Key</a>
+
+</div>
+{% endblock sidebar %}
+
+<div class="right-panel">
+    {% block panel %}{% endblock panel %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,6 @@
+.viewarea {
+    background-color: whitesmoke;
+    resize:vertical; 
+    max-height:500px; 
+    min-height:400px;
+}
