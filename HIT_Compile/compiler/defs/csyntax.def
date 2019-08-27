@@ -1,0 +1,251 @@
+Constant -> CFLOAT | CINT
+
+S -> translation_unit
+
+primary_expression -> IDN
+	| Constant
+	| CSTR
+	| OP expression CP
+
+postfix_expression -> primary_expression
+	| postfix_expression OB expression CB
+	| postfix_expression OP CP
+	| postfix_expression OP argument_expression_list CP
+	| postfix_expression DOT IDN
+	| postfix_expression PTR IDN
+	| postfix_expression INC
+	| postfix_expression DEC
+
+argument_expression_list -> assignment_expression
+	| argument_expression_list COMMA assignment_expression
+
+unary_expression -> postfix_expression
+	| INC unary_expression
+	| DEC unary_expression
+	| unary_operator cast_expression
+
+unary_operator -> BAND | MUL | ADD | SUB | BNEG | NOT
+
+cast_expression -> unary_expression
+	| OP type_name CP cast_expression
+
+multiplicative_expression -> cast_expression
+	| multiplicative_expression MUL cast_expression
+	| multiplicative_expression DIV cast_expression
+	| multiplicative_expression MOD cast_expression
+
+additive_expression -> multiplicative_expression
+	| additive_expression ADD multiplicative_expression
+	| additive_expression SUB multiplicative_expression
+
+shift_expression -> additive_expression
+	| shift_expression BLSHIFT additive_expression
+	| shift_expression BRSHIFT additive_expression
+
+relational_expression -> shift_expression
+	| relational_expression LT shift_expression
+	| relational_expression GT shift_expression
+	| relational_expression LE shift_expression
+	| relational_expression GE shift_expression
+
+equality_expression -> relational_expression
+	| equality_expression EQ relational_expression
+	| equality_expression NE relational_expression
+
+and_expression -> equality_expression
+	| and_expression BAND equality_expression
+
+exclusive_or_expression -> and_expression
+	| exclusive_or_expression BXOR and_expression
+
+inclusive_or_expression -> exclusive_or_expression
+	| inclusive_or_expression BOR exclusive_or_expression
+
+logical_and_expression -> inclusive_or_expression
+	| logical_and_expression AND inclusive_or_expression
+
+logical_or_expression -> logical_and_expression
+	| logical_or_expression OR logical_and_expression
+
+assignment_expression -> logical_or_expression
+	| unary_expression assignment_operator assignment_expression
+
+assignment_operator -> ASSIGN |
+	| MUL_ASSIGN
+	| DIV_ASSIGN
+	| MOD_ASSIGN
+	| ADD_ASSIGN
+	| SUB_ASSIGN
+	| BLSHIFT_ASSIGN
+	| BRSHIFT_ASSIGN
+	| BAND_ASSIGN
+	| BXOR_ASSIGN
+	| BOR_ASSIGN
+
+expression -> assignment_expression
+	| expression COMMA assignment_expression
+
+constant_expression -> logical_or_expression
+
+declaration -> declaration_specifiers SEMI
+	| declaration_specifiers init_declarator_list SEMI
+
+declaration_specifiers -> type_specifier
+	| type_specifier declaration_specifiers
+	| type_qualifier
+	| type_qualifier declaration_specifiers
+
+init_declarator_list -> init_declarator
+	| init_declarator_list COMMA init_declarator
+
+init_declarator -> declarator
+	| declarator ASSIGN initializer
+
+type_specifier -> VOID
+	| CHAR
+	| SHORT
+	| INT
+	| LONG
+	| FLOAT
+	| DOUBLE
+	| SIGNED
+	| UNSIGNED
+	| struct_or_union_specifier
+	| enum_specifier
+
+struct_or_union_specifier -> struct_or_union IDN OC struct_declaration_list CC
+	| struct_or_union OC struct_declaration_list CC
+	| struct_or_union IDN
+
+struct_or_union -> STRUCT
+	| UNION
+
+struct_declaration_list -> struct_declaration
+	| struct_declaration_list struct_declaration
+
+struct_declaration -> specifier_qualifier_list struct_declarator_list SEMI
+
+specifier_qualifier_list -> type_specifier specifier_qualifier_list
+	| type_specifier
+	| type_qualifier specifier_qualifier_list
+	| type_qualifier
+
+struct_declarator_list -> struct_declarator
+	| struct_declarator_list COMMA struct_declarator
+
+struct_declarator -> declarator
+	| PTR constant_expression
+	| declarator PTR constant_expression
+
+enum_specifier -> ENUM OC enumerator_list CC
+	| ENUM IDN OC enumerator_list CC
+	| ENUM IDN
+
+enumerator_list -> enumerator
+	| enumerator_list COMMA enumerator
+
+enumerator -> IDN
+	| IDN ASSIGN constant_expression
+
+type_qualifier -> CONST
+
+declarator -> pointer direct_declarator
+	| direct_declarator
+
+direct_declarator -> IDN
+	| OP declarator CP
+	| direct_declarator OB constant_expression CB
+	| direct_declarator OB CB
+	| direct_declarator OP parameter_type_list CP
+	| direct_declarator OP identifier_list CP
+	| direct_declarator OP CP
+
+pointer -> MUL
+	| MUL type_qualifier_list
+	| MUL pointer
+	| MUL type_qualifier_list pointer
+
+type_qualifier_list -> type_qualifier
+	| type_qualifier_list type_qualifier
+
+
+parameter_type_list -> parameter_list
+
+parameter_list -> parameter_declaration
+	| parameter_list COMMA parameter_declaration
+
+parameter_declaration -> declaration_specifiers declarator
+	| declaration_specifiers abstract_declarator
+	| declaration_specifiers
+
+identifier_list -> IDN
+	| identifier_list COMMA IDN
+
+type_name -> specifier_qualifier_list
+	| specifier_qualifier_list abstract_declarator
+
+abstract_declarator -> pointer
+	| direct_abstract_declarator
+	| pointer direct_abstract_declarator
+
+direct_abstract_declarator -> OP abstract_declarator CP
+	| OB CB
+	| OB constant_expression CB
+	| direct_abstract_declarator OB CB
+	| direct_abstract_declarator OB constant_expression CB
+	| OP CP
+	| OP parameter_type_list CP
+	| direct_abstract_declarator OP CP
+	| direct_abstract_declarator OP parameter_type_list CP
+
+initializer -> assignment_expression
+	| OC initializer_list CC
+	| OC initializer_list COMMA CC
+
+initializer_list -> initializer
+	| initializer_list COMMA initializer
+
+statement -> compound_statement
+	| expression_statement
+	| selection_statement
+	| iteration_statement
+	| jump_statement
+
+compound_statement -> OC CC
+	| OC statement_list CC
+	| OC declaration_list CC
+	| OC declaration_list statement_list CC
+
+declaration_list -> declaration
+	| declaration_list declaration
+
+statement_list -> statement
+	| statement_list statement
+
+expression_statement -> SEMI
+	| expression SEMI
+
+selection_statement -> IF OP expression CP statement
+	| IF OP expression CP statement ELSE statement
+	| SWITCH OP expression CP statement
+
+iteration_statement -> WHILE OP expression CP statement
+	| DO statement WHILE OP expression CP SEMI
+	| FOR OP expression_statement expression_statement CP statement
+	| FOR OP expression_statement expression_statement expression CP statement
+
+jump_statement -> CONTINUE SEMI
+	| BREAK SEMI
+	| RETURN SEMI
+	| RETURN expression SEMI
+
+translation_unit -> external_declaration
+	| translation_unit external_declaration
+
+external_declaration -> function_definition
+	| declaration
+
+function_definition -> declaration_specifiers declarator declaration_list compound_statement
+	| declaration_specifiers declarator compound_statement
+	| declarator declaration_list compound_statement
+	| declarator compound_statement

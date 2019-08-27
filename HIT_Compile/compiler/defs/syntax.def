@@ -1,0 +1,89 @@
+# 变量声明
+VarDecl -> IDN | VarDecl OB CINT CB
+VarDeclStat -> Type VarDecl SEMI
+
+# 函数声明
+FuncDecl -> IDN OP VarDeclList CP
+FuncDeclStat -> Type FuncDecl SEMI
+ParamDecl -> Type VarDecl
+VarDeclList -> ParamDecl COMMA VarDeclList | ParamDecl | e
+
+# 函数定义
+FuncDefStat -> IDN OP VarDeclList CP Block
+
+# 类型
+Type -> SHORT | INT | LONG | FLOAT | DOUBLE | BOOL
+
+# 表达式语句
+PrimaryExpr -> IDN | Constant | CSTR | OP Expr CP
+Constant -> CINT | 
+PostfixExpr -> PrimaryExpr | 
+    PostfixExpr OB Expr CB | 
+    PostfixExpr OP CP |
+    PostfixExpr OP ArgExprList CP |
+    PostfixExpr INC |
+    PostfixExpr DEC
+
+ArgExprList -> AssignExpr | ArgExprList COMMA AssignExpr
+
+UnaryExpr -> PostfixExpr | INC UnaryExpr | DEC UnaryExpr | UnaryOp CastExpr
+UnaryOp -> BAND | MUL | ADD | SUB | BNEG | NOT
+
+CastExpr -> UnaryExpr | OP TypeName CP CastExpr
+MulplicativeExpr -> CastExpr | MulplicativeExpr MUL CastExpr |
+    MulplicativeExpr DIV CastExpr | MulplicativeExpr MOD CastExpr |
+AdditiveExpr -> MulplicativeExpr | AdditiveExpr ADD MulplicativeExpr |
+    AdditiveExpr SUB MulplicativeExpr
+ShiftExpr -> AdditiveExpr | 
+    ShiftExpr BLSHIFT AdditiveExpr |
+    ShiftExpr BRSHIFT AdditiveExpr
+RelExpr -> ShiftExpr |
+    RelExpr LT ShiftExpr |
+    RelExpr GT ShiftExpr |
+    RelExpr LE ShiftExpr |
+    RelExpr GE ShiftExpr
+EqExpr -> RelExpr | EqExpr EQ RelExpr | EqExpr NE RelExpr
+BAndExpr -> EqExpr | BAndExpr BAND EqExpr
+BXorExpr -> BAndExpr | BXorExpr BXOR BAndExpr
+BOrExpr -> BXorExpr | BOrExpr BOR BXorExpr
+AndExpr -> BOrExpr | AndExpr AND BOrExpr
+OrExpr -> AndExpr | OrExpr OR AndExpr
+AssignExpr -> OrExpr | UnaryExpr AssignOp AssignExpr
+AssignOp -> ASSIGN | ADD_ASSIGN | SUB_ASSIGN | MUL_ASSIGN | DIV_ASSIGN | MOD_ASSIGN | 
+    BOR_ASSIGN | BAND_ASSIGN | BXOR_ASSIGN | BLSHIFT_ASSIGN | BRSHIFT_ASSIGN
+Expr -> AssignExpr
+
+VarRef -> IDN | VarRef OB CINT CB
+AssignOp -> ASSIGN | ADD_ASSIGN | SUB_ASSIGN | MUL_ASSIGN | DIV_ASSIGN | MOD_ASSIGN | 
+    BOR_ASSIGN | BAND_ASSIGN | BXOR_ASSIGN | BLSHIFT_ASSIGN | BRSHIFT_ASSIGN
+RelOp -> GT | LT | GE | LE | EQ | LE
+Constant -> CINT | CFLOAT
+ExprStat -> Expr SEMI
+
+# 过程调用
+Call -> IDN OP Args CP
+Args -> Expr COMMA Args | Expr | e
+
+# 语句块
+Block -> OC Block CC | OC Statements CC
+
+# 分支语句
+Branch -> IF OP Expr CP Block ElseBranch
+ElseBranch -> e | 
+		ELIF OP Expr CP Block | 
+		ELSE Block
+
+Loop -> WHILE OP Expr CP Block |
+			FOR OP Expr SEMI Expr SEMI Expr CP Block
+
+# 语句
+Statement -> 
+    VarDeclStat | 
+    ExprStat |
+    Branch |
+    Loop
+Statements -> e | Statement Statements
+
+# 语言宏观定义
+Language -> FuncDeclStat | FuncDefStat
+S -> Language

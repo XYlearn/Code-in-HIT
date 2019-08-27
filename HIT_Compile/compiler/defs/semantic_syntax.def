@@ -1,0 +1,73 @@
+Start -> P
+P -> D
+S -> Stmt Quad S {stmt_s}
+    | e {empty_s}
+Stmt -> IDN ASSIGN E SEMI {stmt_var_assign}
+    | L ASSIGN E SEMI {stmt_arr_assign}
+    | Ref ASSIGN E SEMI {stmt_ref_assign}
+    | CALL IDN OP Elist CP SEMI {stmt_call}
+    | IF B OC Quad S CC {stmt_if}
+    | IF B OC Quad S CC ElseGate ELSE OC Quad S CC {stmt_if_else}
+    | WHILE Quad B DO OC Quad S CC {stmt_while}
+    | VarD {stmt_var_decl}
+    | RETURN E SEMI {stmt_return}
+ElseGate -> e {else_gate}
+
+D -> Func D | Func
+Func -> PROC IDN OP Param CP PTR X OC Quad S CC {func_decl}
+    | PROC IDN OP Param CP OC Quad S CC {func_decl_void}
+Param -> T IDN {param_list_one}
+    | Param COMMA T IDN {param_list}
+    | e {param_list_empty}
+T -> X C {array_type}
+    | STRUCT OC VarDL CC {struct_type}
+VarDL -> VarDL VarD {var_decl_list}
+    | VarD {var_decl_list_begin}
+VarD -> T IDN SEMI {var_decl}
+X -> CHAR {prim_type} 
+    | SHORT {prim_type} 
+    | INT {prim_type} 
+    | FLOAT {prim_type} 
+    | DOUBLE {prim_type}
+C -> OB CINT CB C {arr_brace} 
+    | e
+
+E -> E ADD Y {arithmatic_expr1}
+    | E SUB Y {arithmatic_expr2}
+    | Y {expr_derive}
+Y -> Y MUL F {arithmatic_expr3}
+    | Y DIV F {arithmatic_expr4}
+    | Y MOD F {arithmatic_expr5}
+    | F {expr_derive}
+    | CALL IDN OP Elist CP {stmt_call}
+F -> OP E CP {paren_expr}
+    | M {expr_derive}
+M -> IDN {expr_idn}
+    | CINT {expr_tok}
+    | CFLOAT {expr_tok}
+    | SUB CINT {sub_val}
+    | SUB CFLOAT {sub_val}
+    | L {expr_derive}
+    | Ref {expr_derive}
+L -> IDN OB E CB {arr_ref_one}
+    | L OB E CB {arr_ref}
+Ref -> IDN DOT IDN {record_ref}
+
+B -> B OR Quad G {bool_expr1} 
+    | G {expr_derive}
+G -> G AND Quad H {bool_expr2} 
+    | H {expr_derive}
+H -> NOT H {bool_expr3} 
+    | I {expr_derive}
+I -> E R E {bool_expr4} 
+    | OP B CP {paren_expr}
+    | BConst {bool_expr5}
+BConst -> TRUE
+    | FALSE
+R -> LT | LE | EQ | NE | GT | GE
+Quad -> e {quad}
+
+Arg -> E {expr_derive}
+Elist -> Elist COMMA Arg {arg_list}
+    | Arg {arg_list_one}
+    | e {arg_list_empty}

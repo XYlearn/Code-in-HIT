@@ -1,0 +1,35 @@
+Start -> P
+P -> D
+S -> Stmt S | e
+Stmt -> IDN ASSIGN E SEMI 
+    | L ASSIGN E SEMI 
+    | CALL IDN OP Elist CP SEMI 
+    | IF B OC S CC 
+    | IF B OC S CC ELSE OC S CC 
+    | WHILE B DO OC S CC 
+    | VarD
+
+D -> Func D | Func
+Func -> PROC IDN OP Param CP OC S CC
+Param -> T IDN | Param COMMA T IDN | e
+VarD -> T IDN SEMI
+VarDL -> VarDL VarD | VarD
+T -> X C | STRUCT OC VarDL CC
+X -> CHAR | SHORT | INT | FLOAT | DOUBLE
+C -> OB CINT CB C | e
+
+L -> IDN OB E CB | L OB E CB
+E -> E ADD Y | E SUB Y | Y
+Y -> Y MUL F | Y DIV F | Y MOD F | F
+F -> OP M CP | M
+M -> IDN | CINT | CFLOAT | L
+
+B -> B OR G | G
+G -> G AND H | H
+H -> NOT H | I
+
+I -> E R E | OP B CP
+R -> LT | LE | EQ | NE | GT | GE
+
+Arg -> B | E | CSTR
+Elist -> Elist COMMA Arg | Arg | e
